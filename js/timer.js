@@ -37,7 +37,7 @@ function calculo (){
             minutoAtual--
             segundoAtual=59
             horaminuto();
-        }    
+        }
         else {
             document.getElementById('toque').play();
             clearInterval(interval)
@@ -53,12 +53,11 @@ function calculo (){
     display.innerHTML = horaAtual+":"+minutoAtual+":"+segundoAtual
 }
 
-
 iniciar.addEventListener('click', function() {
     if (this.innerHTML == "Pausar") {
-        this.innerHTML = "Continuar"
+        this.innerHTML = "Iniciar "
         clearInterval(interval);
-    } else if (this.innerHTML == "Continuar"){
+    } else if (this.innerHTML == "Iniciar "){
         this.innerHTML = "Pausar"
         interval = setInterval(function(){
             calculo();
@@ -87,6 +86,7 @@ cancelar.addEventListener('click', function(){
     document.getElementById('toque').pause();
     horaminuto();
     display.innerHTML = horaAtual+":"+minutoAtual+":"+segundoAtual
+    iniciar.innerHTML = "Iniciar";
 
 })
 
@@ -95,3 +95,38 @@ function horaminuto (){
     minutoAtual = minutoAtual.toString().padStart(2,"0");
     segundoAtual = segundoAtual.toString().padStart(2,"0");
 }
+
+
+document.addEventListener("keydown", function(e){
+	if (e.keyCode == 73 ){
+        horaAtual = horas.value
+        minutoAtual = minutos.value
+        segundoAtual = segundos.value
+        horaminuto();
+        display.innerHTML = horaAtual+":"+minutoAtual+":"+segundoAtual
+        interval = setInterval(function(){
+            calculo();
+        }, 1000)
+	}
+	else if (e.keyCode == 80 ){
+        horaminuto();
+        display.innerHTML = horaAtual+":"+minutoAtual+":"+segundoAtual
+        clearInterval(interval);
+        this.innerHTML = "Continuar"
+	}
+    else if (e.keyCode == 67 ){
+        clearInterval(interval)
+        horaAtual = "00"
+        minutoAtual = "00"
+        segundoAtual = "00"
+        document.getElementById('toque').pause();
+        horaminuto();
+        display.innerHTML = horaAtual+":"+minutoAtual+":"+segundoAtual
+        iniciar.innerHTML = "Iniciar";
+        horas = 0;
+        minutos = 0;
+        segundos = 0;
+    
+	}
+    
+}, false);
