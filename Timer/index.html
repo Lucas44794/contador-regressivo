@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>timer</title>
+</head>
+    <body>
+
+        <audio id="toque" src="som/ativo.mp3"></audio>
+        <main class="container__principal">
+            <h1 class="titulo">Timer</h1>
+            <div class="timer">
+                <h2 id="timer-tempo">00:00:00</h2>
+                <h3>Horas</h3>
+                <select name="horas" id="horas"></select>
+                <h3>Minutos</h3>
+                <select name="minutos" id="minutos"></select>
+                <h3>Segundos</h3>
+                <select name="segundos" id="segundos"></select>
+
+
+                <div class="timer-botao">
+                    <button onclick="iniciar()" id="iniciar--pausar"></button>
+                    <button onclick="parar()" id="cancelar">Cancelar</button>
+                </div>
+            </div>
+        </main>
+
+        <script src="js/timer.js"></script>
+    </body>
+</html>
